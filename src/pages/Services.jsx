@@ -1,3 +1,6 @@
+import PageTransition from '../components/PageTransition'
+import Reveal from '../components/Reveal'
+
 export default function Services() {
   const items = [
     { title: 'uPVC Windows', desc: 'Durable, low-maintenance, and energy-efficient window systems.' },
@@ -7,19 +10,23 @@ export default function Services() {
     { title: 'Repair & Maintenance', desc: 'Seal replacement, alignment, and hardware fixes.' },
   ]
   return (
-    <div className="bg-black text-white pt-24 pb-16">
+    <PageTransition className="bg-black text-white pt-24 pb-16">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <h1 className="text-3xl font-bold">Services</h1>
-        <p className="mt-2 text-white/70">End-to-end solutions from consultation to installation and ongoing support.</p>
+        <Reveal>
+          <h1 className="text-3xl font-bold">Services</h1>
+          <p className="mt-2 text-white/70">End-to-end solutions from consultation to installation and ongoing support.</p>
+        </Reveal>
         <div className="mt-8 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
           {items.map((s, i) => (
-            <div key={i} className="rounded-xl border border-white/10 bg-white/5 p-6 hover:bg-white/10 transition">
-              <h3 className="text-lg font-semibold">{s.title}</h3>
-              <p className="mt-2 text-sm text-white/80">{s.desc}</p>
-            </div>
+            <Reveal key={i} delay={i * 0.05}>
+              <div className="rounded-xl border border-white/10 bg-white/5 p-6 hover:bg-white/10 transition">
+                <h3 className="text-lg font-semibold">{s.title}</h3>
+                <p className="mt-2 text-sm text-white/80">{s.desc}</p>
+              </div>
+            </Reveal>
           ))}
         </div>
       </div>
-    </div>
+    </PageTransition>
   )
 }
